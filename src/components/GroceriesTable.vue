@@ -4,21 +4,12 @@ import { computed, } from 'vue';
 const props = defineProps({
     groceries: {
         type:   Array,
-        default: () => [{
-            product :   '',
-            prijs   :   Number(0),
-            aantal  :   Number(0)
-        }]
     }
 })
-   
 
-const computedSubtotaal = computed(() => { 
-  return props.groceries.map(item => item.prijs * item.aantal)
-})
-
-const computedTotal = computed(() => {
- return computedSubtotaal.value.reduce((total, num) => total + num , 0)
+const total = computed(() => {
+  let subTotal = props.groceries.map(groceries => groceries.price * groceries.count)
+ return subTotal.reduce((total, num) => total + num , 0)
 })
 
 </script>
@@ -35,12 +26,15 @@ const computedTotal = computed(() => {
     </thead>
     <tbody>
       <tr v-for="(item, index) in props.groceries" :key="index">
-        <td>{{ item.product }}</td><td class="money">€{{ item.prijs.toFixed(2) }}</td><td><input type="number" v-model="item.aantal" /></td><td class="money">€{{ computedSubtotaal[index].toFixed(2) }}</td>
+        <td>{{ item.product }}</td>
+        <td class="money">€{{ item.price.toFixed(2) }}</td>
+        <td><input type="number" v-model="item.count" /></td>
+        <td class="money">€{{ (item.price * item.count).toFixed(2) }}</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3">totaal</td><td class="money">€{{ computedTotal.toFixed(2) }}</td>
+        <td colspan="3">totaal</td><td class="money">€{{ total.toFixed(2) }}</td>
       </tr>
     </tfoot>
   </table>

@@ -2,33 +2,33 @@
 import { ref } from 'vue';
 import GroceriesTable from './components/GroceriesTable.vue';
 
-const boodschappen = ref([
+const groceries = ref([
   {
   product     :   'Rijst',
-  prijs       :   1.00,
-  aantal      :   1
+  price       :   1.00,
+  count      :   1
 },
   {
   product     :   'Broccoli',
-  prijs       :   0.99,
-  aantal      :   1
+  price       :   0.99,
+  count      :   1
 },
   {
   product     :   'Koekjes',
-  prijs       :   1.20,
-  aantal      :   1
+  price       :   1.20,
+  count      :   1
 },  
   {
   product     :   'Noten',
-  prijs       :   2.99,
-  aantal      :   1
+  price       :   2.99,
+  count      :   1
 }])
 
 </script>
 
 <template>
 <div>
-<GroceriesTable :groceries="boodschappen" />
+<GroceriesTable :groceries="groceries" />
 </div>
 </template>
 
