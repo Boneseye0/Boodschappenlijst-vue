@@ -1,7 +1,9 @@
-import { createRouter } from 'vue-router'
+import Create from '../pages/Create.vue'
+import Edit from '../pages/Edit.vue'
+import Overview from '../pages/Overview.vue'
 
-import create from '../pages/Create.vue'
-
-const routes = [
-    path:   '/'
+export const groceryRoutes = [
+   { path: '/create', name: 'Create', component: Create },
+   { path: '/edit', name: 'Edit', component: Edit },
+   { path: '/', name: 'Overview', component: Overview }
 ]
