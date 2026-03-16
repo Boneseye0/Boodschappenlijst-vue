@@ -8,7 +8,7 @@ import { RouterView } from 'vue-router';
   <nav>
     <RouterLink to="/">Overview</RouterLink> | 
     <RouterLink to="/create">Create</RouterLink> | 
-    <!-- <RouterLink to="/edit">Edit</RouterLink> -->
+    <RouterLink to="/edit/:id">Edit</RouterLink>
   </nav>
 <div>
   <RouterView/>

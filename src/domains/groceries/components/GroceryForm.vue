@@ -12,7 +12,7 @@ const emit = defineEmits([
 ]);
 
 const submit = () => {
-    emit('submit', newGrocery)
+    emit('submit', newGrocery.value)
 };
 
 </script>
@@ -42,10 +42,11 @@ const submit = () => {
                     <td><input type="text" placeholder="Product naam" v-model="newGrocery.product"></td>
                     <td><input type="number" placeholder="0.00" v-model="newGrocery.price"></td>
                     <td><input type="number" placeholder="0" v-model="newGrocery.count"></td>
+                    <td>id:{{ newGrocery.id }}</td>
                 </tr>
                 <tr>
                     <td>
-                        <button @click="submit"></button>
+                        <button @click="submit">Opslaan</button>
                     </td>
                 </tr>
             </tbody>

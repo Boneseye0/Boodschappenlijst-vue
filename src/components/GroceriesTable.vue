@@ -1,15 +1,20 @@
 <script setup>
 import { computed, } from 'vue';
+import { useRouter } from 'vue-router';
+import { deleteGrocery } from '../domains/groceries/components/store';
+
 
 const props = defineProps({
     groceries: {
         type:   Array,
     }
 })
+const router = useRouter()
+
+const remove = deleteGrocery
 
 const total = computed(() => {
-  let subTotal = props.groceries.map(groceries => groceries.price * groceries.count)
- return subTotal.reduce((total, num) => total + num , 0)
+ return props.groceries.reduce((total, item) => total + item.price * item.count , 0)
 })
 
 </script>
@@ -30,6 +35,8 @@ const total = computed(() => {
         <td class="money">€{{ item.price.toFixed(2) }}</td>
         <td><input type="number" v-model="item.count" /></td>
         <td class="money">€{{ (item.price * item.count).toFixed(2) }}</td>
+        <td><button @click="router.push(`/edit/${item.id}`)">update</button></td>
+        <td><button @click="remove(item.id)">verwijder</button></td>
       </tr>
     </tbody>
     <tfoot>

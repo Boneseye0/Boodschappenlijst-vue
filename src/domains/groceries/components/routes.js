@@ -3,7 +3,7 @@ import Edit from '../pages/Edit.vue'
 import Overview from '../pages/Overview.vue'
 
 export const groceryRoutes = [
+   { path: '/', name: 'Overview', component: Overview },
    { path: '/create', name: 'Create', component: Create },
-   { path: '/edit', name: 'Edit', component: Edit },
-   { path: '/', name: 'Overview', component: Overview }
+   { path: '/edit/:id', name: 'Edit', component: Edit }
 ]
